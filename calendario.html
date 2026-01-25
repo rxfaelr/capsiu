@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CAPSIU</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root{
+      --background-color: #f2f0ef;
+      --default-color: rgba(0,0,0,0.85);
+      --heading-color: #0b2c3e;
+      --accent-color: #0172b0;
+      --surface-color: #ffffff;
+      --contrast-color: #000000;
+      --nav-color: rgba(0,0,0,0.85);
+      --nav-hover-color: #0172b0;
+      --nav-mobile-background-color: #f4f3f2;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: rgba(0,0,0,0.85);
+      --nav-dropdown-hover-color: #0172b0;
+    }
+    /* Override any remaining hard-coded yellow values */
+    .polaroid::before{ background: color-mix(in srgb, var(--accent-color), transparent 60%) !important; }
+    .calendar-day:not(.empty):hover{ background: color-mix(in srgb, var(--accent-color), transparent 80%) !important; }
+    .processo-seletivo-btn{ box-shadow: 0 5px 20px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
+    .processo-seletivo-btn:hover{ box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <h1 class="sitename">CAPSIU</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">InÃ­cio</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="tutoriais.html">Tutoriais</a></li>
+          <li><a href="calendario.html" class="active">CalendÃ¡rio</a></li>
+          <li><a href="mascote.html">Mascote</a></li>
+          <li><a href="processo-seletivo.html">Processo Seletivo</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">Contato</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section section">
+
+      <!-- Section Title -->
+      <div class="section-title-banner" data-aos="fade-up">
+        <div class="container section-title">
+          <h2>CalendÃ¡rio</h2>
+        </div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="calendar-container">
+          <!-- NavegaÃ§Ã£o do CalendÃ¡rio -->
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonth" aria-label="MÃªs anterior">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <div class="calendar-nav-title" id="calendarTitle">Janeiro <span>2026</span></div>
+            <button class="calendar-nav-btn" id="nextMonth" aria-label="PrÃ³ximo mÃªs">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+          
+          <!-- CalendÃ¡rio do MÃªs -->
+          <div id="calendar-month" class="calendar-month"></div>
+        </div>
+        
+        <!-- Legenda de Eventos -->
+        <div class="calendar-legend" data-aos="fade-up" data-aos-delay="200">
+          <h4><i class="bi bi-calendar-event"></i> PrÃ³ximos Eventos</h4>
+          <div id="legend-items" class="legend-items"></div>
+        </div>
+      </div>
+
+      <script>
+        // ========================================
+        // CONFIGURAÃ‡ÃƒO DE EVENTOS DO CALENDÃRIO
+        // Para adicionar um evento, adicione um objeto no array abaixo:
+        // { date: 'YYYY-MM-DD', name: 'Nome do Evento' }
+        // ========================================
+        const calendarEvents = [
+          { date: '2026-01-15', name: 'ReuniÃ£o' },
+          { date: '2026-02-14', name: 'Workshop' },
+          { date: '2026-03-21', name: 'Palestra' },
+          { date: '2026-04-10', name: 'Evento' },
+          { date: '2026-05-01', name: 'Feriado' },
+          { date: '2026-06-24', name: 'SÃ£o JoÃ£o' },
+          { date: '2026-07-15', name: 'FÃ©rias' },
+          { date: '2026-09-07', name: 'Feriado' },
+          { date: '2026-10-12', name: 'Feriado' },
+          { date: '2026-11-15', name: 'Feriado' },
+          { date: '2026-12-25', name: 'Natal' },
+        ];
+        // ========================================
+
+        const monthNames = [
+          'Janeiro', 'Fevereiro', 'MarÃ§o', 'Abril', 'Maio', 'Junho',
+          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+        ];
+        const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'SÃ¡b'];
+        
+        const today = new Date();
+        let currentMonth = today.getMonth(); // MÃªs atual (0-11)
+        let currentYear = today.getFullYear(); // Ano atual
+
+        function getEventForDate(year, month, day) {
+          const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          return calendarEvents.find(e => e.date === dateStr);
+        }
+
+        function renderMonth() {
+          const calendarContainer = document.getElementById('calendar-month');
+          const titleElement = document.getElementById('calendarTitle');
+          
+          // Atualizar tÃ­tulo
+          titleElement.innerHTML = `${monthNames[currentMonth]} <span>${currentYear}</span>`;
+          
+          const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+          const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+          
+          let monthHTML = `
+            <div class="calendar-weekdays">
+              ${weekDays.map(d => `<div class="calendar-weekday">${d}</div>`).join('')}
+            </div>
+            <div class="calendar-days">
+          `;
+          
+          // Dias vazios antes do primeiro dia do mÃªs
+          for (let i = 0; i < firstDay; i++) {
+            monthHTML += '<div class="calendar-day empty"></div>';
+          }
+          
+          // Dias do mÃªs
+          for (let day = 1; day <= daysInMonth; day++) {
+            const event = getEventForDate(currentYear, currentMonth, day);
+            const hasEvent = event ? 'has-event' : '';
+            const eventName = event ? `<span class="event-name">${event.name}</span>` : '';
+            const eventTitle = event ? `title="${event.name}"` : '';
+            
+            monthHTML += `
+              <div class="calendar-day ${hasEvent}" ${eventTitle}>
+                <span class="day-number">${day}</span>
+                ${eventName}
+              </div>
+            `;
+          }
+          
+          monthHTML += '</div>';
+          calendarContainer.innerHTML = monthHTML;
+        }
+
+        function prevMonth() {
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+          renderMonth();
+        }
+
+        function nextMonth() {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+          renderMonth();
+        }
+
+        function generateLegend() {
+          const legendContainer = document.getElementById('legend-items');
+          
+          // Gerar legenda de eventos
+          const sortedEvents = [...calendarEvents].sort((a, b) => new Date(a.date) - new Date(b.date));
+          sortedEvents.forEach(event => {
+            const date = new Date(event.date);
+            const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+            legendContainer.innerHTML += `
+              <div class="legend-item">
+                <div class="legend-color"></div>
+                <div class="legend-text">
+                  <span class="legend-date">${formattedDate}</span> - ${event.name}
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          renderMonth();
+          generateLegend();
+          
+          document.getElementById('prevMonth').addEventListener('click', prevMonth);
+          document.getElementById('nextMonth').addEventListener('click', nextMonth);
+        });
+      </script>
+
+    </section><!-- /Calendar Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">CAPSIU</span>
+          </a>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+       
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
