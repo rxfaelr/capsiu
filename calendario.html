@@ -62,10 +62,10 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">InÃ­cio</a></li>
+          <li><a href="index.html">Início</a></li>
           <li><a href="produtos.html">Produtos</a></li>
           <li><a href="tutoriais.html">Tutoriais</a></li>
-          <li><a href="calendario.html" class="active">CalendÃ¡rio</a></li>
+          <li><a href="calendario.html" class="active">Calendário</a></li>
           <li><a href="mascote.html">Mascote</a></li>
           <li><a href="processo-seletivo.html">Processo Seletivo</a></li>
         </ul>
@@ -85,48 +85,48 @@
       <!-- Section Title -->
       <div class="section-title-banner" data-aos="fade-up">
         <div class="container section-title">
-          <h2>CalendÃ¡rio</h2>
+          <h2>Calendário</h2>
         </div>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="calendar-container">
-          <!-- NavegaÃ§Ã£o do CalendÃ¡rio -->
+          <!-- Navegação do Calendário -->
           <div class="calendar-nav">
-            <button class="calendar-nav-btn" id="prevMonth" aria-label="MÃªs anterior">
+            <button class="calendar-nav-btn" id="prevMonth" aria-label="Mês anterior">
               <i class="bi bi-chevron-left"></i>
             </button>
             <div class="calendar-nav-title" id="calendarTitle">Janeiro <span>2026</span></div>
-            <button class="calendar-nav-btn" id="nextMonth" aria-label="PrÃ³ximo mÃªs">
+            <button class="calendar-nav-btn" id="nextMonth" aria-label="Próximo mês">
               <i class="bi bi-chevron-right"></i>
             </button>
           </div>
           
-          <!-- CalendÃ¡rio do MÃªs -->
+          <!-- Calendário do Mês -->
           <div id="calendar-month" class="calendar-month"></div>
         </div>
         
         <!-- Legenda de Eventos -->
         <div class="calendar-legend" data-aos="fade-up" data-aos-delay="200">
-          <h4><i class="bi bi-calendar-event"></i> PrÃ³ximos Eventos</h4>
+          <h4><i class="bi bi-calendar-event"></i> Próximos Eventos</h4>
           <div id="legend-items" class="legend-items"></div>
         </div>
       </div>
 
       <script>
         // ========================================
-        // CONFIGURAÃ‡ÃƒO DE EVENTOS DO CALENDÃRIO
+        // CONFIGURAÇÃO DE EVENTOS DO CALENDÁRIO
         // Para adicionar um evento, adicione um objeto no array abaixo:
         // { date: 'YYYY-MM-DD', name: 'Nome do Evento' }
         // ========================================
         const calendarEvents = [
-          { date: '2026-01-15', name: 'ReuniÃ£o' },
+          { date: '2026-01-15', name: 'Reunião' },
           { date: '2026-02-14', name: 'Workshop' },
           { date: '2026-03-21', name: 'Palestra' },
           { date: '2026-04-10', name: 'Evento' },
           { date: '2026-05-01', name: 'Feriado' },
-          { date: '2026-06-24', name: 'SÃ£o JoÃ£o' },
-          { date: '2026-07-15', name: 'FÃ©rias' },
+          { date: '2026-06-24', name: 'São João' },
+          { date: '2026-07-15', name: 'Férias' },
           { date: '2026-09-07', name: 'Feriado' },
           { date: '2026-10-12', name: 'Feriado' },
           { date: '2026-11-15', name: 'Feriado' },
@@ -135,13 +135,13 @@
         // ========================================
 
         const monthNames = [
-          'Janeiro', 'Fevereiro', 'MarÃ§o', 'Abril', 'Maio', 'Junho',
+          'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
           'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
         ];
-        const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'SÃ¡b'];
+        const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
         
         const today = new Date();
-        let currentMonth = today.getMonth(); // MÃªs atual (0-11)
+        let currentMonth = today.getMonth(); // Mês atual (0-11)
         let currentYear = today.getFullYear(); // Ano atual
 
         function getEventForDate(year, month, day) {
@@ -153,7 +153,7 @@
           const calendarContainer = document.getElementById('calendar-month');
           const titleElement = document.getElementById('calendarTitle');
           
-          // Atualizar tÃ­tulo
+          // Atualizar título
           titleElement.innerHTML = `${monthNames[currentMonth]} <span>${currentYear}</span>`;
           
           const firstDay = new Date(currentYear, currentMonth, 1).getDay();
@@ -166,12 +166,12 @@
             <div class="calendar-days">
           `;
           
-          // Dias vazios antes do primeiro dia do mÃªs
+          // Dias vazios antes do primeiro dia do mês
           for (let i = 0; i < firstDay; i++) {
             monthHTML += '<div class="calendar-day empty"></div>';
           }
           
-          // Dias do mÃªs
+          // Dias do mês
           for (let day = 1; day <= daysInMonth; day++) {
             const event = getEventForDate(currentYear, currentMonth, day);
             const hasEvent = event ? 'has-event' : '';
@@ -284,3 +284,5 @@
 </body>
 
 </html>
+
+
