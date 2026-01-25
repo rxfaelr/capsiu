@@ -26,6 +26,27 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root{
+      --background-color: #f2f0ef;
+      --default-color: rgba(0,0,0,0.85);
+      --heading-color: #0b2c3e;
+      --accent-color: #0172b0;
+      --surface-color: #ffffff;
+      --contrast-color: #000000;
+      --nav-color: rgba(0,0,0,0.85);
+      --nav-hover-color: #0172b0;
+      --nav-mobile-background-color: #f4f3f2;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: rgba(0,0,0,0.85);
+      --nav-dropdown-hover-color: #0172b0;
+    }
+    /* Override any remaining hard-coded yellow values */
+    .polaroid::before{ background: color-mix(in srgb, var(--accent-color), transparent 60%) !important; }
+    .calendar-day:not(.empty):hover{ background: color-mix(in srgb, var(--accent-color), transparent 80%) !important; }
+    .processo-seletivo-btn{ box-shadow: 0 5px 20px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
+    .processo-seletivo-btn:hover{ box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
+  </style>
 
   <!-- =======================================================
   * Template Name: Strategy
