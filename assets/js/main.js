@@ -28,7 +28,7 @@
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    const isDesktop = window.matchMedia('(min-width: 992px)').matches;
+    const isDesktop = window.matchMedia('(min-width: 1200px)').matches;
     if (isDesktop) {
       document.querySelector('body').classList.toggle('sidebar-collapsed');
       mobileNavToggleBtn.classList.toggle('bi-list');
