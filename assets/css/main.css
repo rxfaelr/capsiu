@@ -992,7 +992,7 @@ section,
 .hero .cta-button .btn:hover {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
-  color: var(--contrast-color);
+  color: #ffffff;
 }
 
 .hero .cta-button .btn:hover i {
@@ -4102,8 +4102,8 @@ section,
 }
 
 .calendar-nav-btn {
-  background: var(--accent-color);
-  color: #000;
+  background: #004aad;
+  color: #ffffff;
   border: none;
   width: 50px;
   height: 50px;
@@ -4117,7 +4117,7 @@ section,
 }
 
 .calendar-nav-btn:hover {
-  background: color-mix(in srgb, var(--accent-color), white 20%);
+  background: color-mix(in srgb, #004aad, white 20%);
   transform: scale(1.1);
 }
 
@@ -4129,7 +4129,7 @@ section,
 }
 
 .calendar-nav-title span {
-  color: var(--accent-color);
+  color: #004aad;
 }
 
 .calendar-month {
@@ -4150,7 +4150,7 @@ section,
   text-align: center;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent-color);
+  color: #004aad;
   padding: 10px 0;
 }
 
@@ -4176,7 +4176,12 @@ section,
 }
 
 .calendar-day:not(.empty):hover {
-  background: rgba(227, 161, 39, 0.2);
+  background: #c32424;
+  color: #ffffff;
+}
+
+.calendar-day:not(.empty):hover .event-name {
+  color: #ffffff;
 }
 
 .calendar-day.empty {
@@ -4185,14 +4190,14 @@ section,
 }
 
 .calendar-day.has-event {
-  background: var(--accent-color);
-  color: #000;
+  background: #c32424;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
 }
 
 .calendar-day.has-event:hover {
-  background: color-mix(in srgb, var(--accent-color), white 20%);
+  background: color-mix(in srgb, #c32424, white 20%);
   transform: scale(1.05);
 }
 
@@ -4214,7 +4219,7 @@ section,
 }
 
 .calendar-day.has-event .event-name {
-  color: #000;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -4227,9 +4232,13 @@ section,
 }
 
 .calendar-legend h4 {
-  color: var(--heading-color);
+  color: #004aad;
   margin-bottom: 20px;
   font-size: 1.2rem;
+}
+
+.calendar-legend h4 i {
+  color: #004aad;
 }
 
 .legend-items {
@@ -4250,7 +4259,7 @@ section,
 .legend-color {
   width: 20px;
   height: 20px;
-  background: var(--accent-color);
+  background: #004aad;
   border-radius: 4px;
 }
 
@@ -4261,7 +4270,7 @@ section,
 
 .legend-date {
   font-weight: 600;
-  color: var(--accent-color);
+  color: #004aad;
 }
 
 @media (max-width: 576px) {
@@ -4420,7 +4429,7 @@ section,
 .processo-seletivo-btn {
   display: inline-block;
   background: var(--accent-color);
-  color: #000;
+  color: #ffffff;
   padding: 18px 45px;
   border-radius: 50px;
   font-size: 1.1rem;
