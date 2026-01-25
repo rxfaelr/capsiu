@@ -3889,6 +3889,49 @@ section,
   display: block;
 }
 
+.polaroid-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.polaroid-nav i {
+  font-size: 18px;
+}
+
+.polaroid-prev {
+  left: 10px;
+}
+
+.polaroid-next {
+  right: 10px;
+}
+
+.polaroid:hover .polaroid-nav,
+.polaroid:focus-within .polaroid-nav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1.02);
+}
+
+.polaroid-nav:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
 .polaroid-caption {
   position: absolute;
   bottom: 12px;

@@ -219,4 +219,38 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Polaroid product image switcher
+   */
+  function initPolaroidGallery() {
+    document.querySelectorAll('.polaroid').forEach((polaroid) => {
+      const image = polaroid.querySelector('.polaroid-image[data-srcs]');
+      if (!image) return;
+      const srcs = image.dataset.srcs
+        .split('|')
+        .map((src) => src.trim())
+        .filter(Boolean);
+      if (srcs.length < 2) return;
+
+      let index = 0;
+      const setIndex = (nextIndex) => {
+        index = (nextIndex + srcs.length) % srcs.length;
+        image.src = srcs[index];
+      };
+
+      const prevBtn = polaroid.querySelector('.polaroid-prev');
+      const nextBtn = polaroid.querySelector('.polaroid-next');
+      const handleNav = (delta) => (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setIndex(index + delta);
+      };
+
+      if (prevBtn) prevBtn.addEventListener('click', handleNav(-1));
+      if (nextBtn) nextBtn.addEventListener('click', handleNav(1));
+    });
+  }
+
+  window.addEventListener('load', initPolaroidGallery);
+
 })();
