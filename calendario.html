@@ -46,6 +46,22 @@
     .calendar-day:not(.empty):hover{ background: #c32424 !important; color: #ffffff !important; }
     .processo-seletivo-btn{ box-shadow: 0 5px 20px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
     .processo-seletivo-btn:hover{ box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%) !important; }
+    /* Forçar cada item da legenda a ocupar uma linha */
+    .calendar-legend .legend-items { display: block; }
+    .calendar-legend .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.4rem 0;
+    }
+    .calendar-legend .legend-color {
+      width: 12px;
+      height: 12px;
+      background: var(--accent-color);
+      border-radius: 2px;
+      flex: 0 0 12px;
+    }
+    .calendar-legend .legend-text { white-space: normal; }
   </style>
 </head>
 
@@ -112,17 +128,16 @@
         // { date: 'YYYY-MM-DD', name: 'Nome do Evento' }
         // ========================================
         const calendarEvents = [
-          { date: '2026-01-15', name: 'Reunião' },
-          { date: '2026-02-14', name: 'Workshop' },
-          { date: '2026-03-21', name: 'Palestra' },
-          { date: '2026-04-10', name: 'Evento' },
-          { date: '2026-05-01', name: 'Feriado' },
-          { date: '2026-06-24', name: 'São João' },
-          { date: '2026-07-15', name: 'Férias' },
-          { date: '2026-09-07', name: 'Feriado' },
-          { date: '2026-10-12', name: 'Feriado' },
-          { date: '2026-11-15', name: 'Feriado' },
-          { date: '2026-12-25', name: 'Natal' },
+          { date: '2026-02-09', name: 'Recepção dos Calouros' },
+          { date: '2026-02-22', name: 'Atividade na Sala do CAPSIU (Durante o Intervalo)' },
+          { date: '2026-03-01', name: 'Semana: Dinâmica de Apadrinhamento' },
+          { date: '2026-03-08', name: 'Semana: Montagem da Exposição referente ao Dia da Mulher' },
+          { date: '2026-03-12', name: 'Apresentação da Exposição' },
+          { date: '2026-03-31', name: 'Roda de Conversa/Momento Reflexivo: Dia da Mulher' },
+          { date: '2026-04-08', name: 'Semana: Roda de Conversa com ex-alunos sobre o dia da conscientização sobre o Autismo' },
+          { date: '2026-04-27', name: 'Semana: Atividade na Sala do CAPSIU (Durante o Intervalo)' },
+          { date: '2026-05-17', name: 'Semana: Roda de Conversa com enfoque no mês de combate ao abuso e à exploração sexual de crianças e adolescentes' },
+          { date: '2026-05-24', name: 'Semana: Atividade na Sala do CAPSIU (Durante o Intervalo)' },
         ];
         // ========================================
 
@@ -167,13 +182,12 @@
           for (let day = 1; day <= daysInMonth; day++) {
             const event = getEventForDate(currentYear, currentMonth, day);
             const hasEvent = event ? 'has-event' : '';
-            const eventName = event ? `<span class="event-name">${event.name}</span>` : '';
+            // Removida a legenda (nome do evento) exibida dentro do dia destacado.
             const eventTitle = event ? `title="${event.name}"` : '';
             
             monthHTML += `
               <div class="calendar-day ${hasEvent}" ${eventTitle}>
                 <span class="day-number">${day}</span>
-                ${eventName}
               </div>
             `;
           }
@@ -204,9 +218,12 @@
           const legendContainer = document.getElementById('legend-items');
           
           // Gerar legenda de eventos
-          const sortedEvents = [...calendarEvents].sort((a, b) => new Date(a.date) - new Date(b.date));
+          // Ordena por string YYYY-MM-DD (orden lexical funciona para esse formato)
+          const sortedEvents = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
           sortedEvents.forEach(event => {
-            const date = new Date(event.date);
+            // Criar Date no fuso local a partir dos componentes para evitar erro de timezone
+            const [year, month, day] = event.date.split('-').map(Number);
+            const date = new Date(year, month - 1, day);
             const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
             legendContainer.innerHTML += `
               <div class="legend-item">
