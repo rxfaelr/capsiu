@@ -4477,3 +4477,8 @@ section,
     font-size: 1rem;
   }
 }
+
+/* Hide footer across all pages */
+footer.footer {
+  display: none !important;
+}
