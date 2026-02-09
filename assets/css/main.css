@@ -1033,6 +1033,7 @@ section,
 }
 
 .hero .fluid-shape .fluid-img {
+  max-width: 500px;
   width: 100%;
   height: auto;
   animation: float 6s ease-in-out infinite;
@@ -4340,7 +4341,7 @@ section,
 }
 
 .mascote-image img {
-  max-width: 350px;
+  max-width: 500px;
   height: auto;
   border-radius: 20px;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
@@ -4390,7 +4391,7 @@ section,
   }
   
   .mascote-image img {
-    max-width: 280px;
+    max-width: 380px;
   }
   
   .mascote-content h3 {
@@ -4404,7 +4405,7 @@ section,
 
 @media (max-width: 576px) {
   .mascote-image img {
-    max-width: 220px;
+    max-width: 260px;
   }
   
   .mascote-content h3 {
